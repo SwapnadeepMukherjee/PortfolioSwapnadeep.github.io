@@ -72,6 +72,20 @@ input, select, textarea {
 	appearance: none;
 }
 
+/* Flexbox properties for the container */
+.flex-container {
+    display: flex;
+    flex-wrap: wrap; /* Allows items to wrap onto the next line */
+    justify-content: space-around; /* Distributes space evenly */
+}
+
+/* Default styling for larger screens (e.g., desktop/tablet) */
+.flex-item {
+    /* Each item takes up roughly one-third of the container width (minus margins) */
+    flex: 1 1 calc(33.33% - 20px);
+    max-width: calc(33.33% - 20px);
+}
+
 /* Basic */
 
 	@-ms-viewport {
@@ -84,6 +98,20 @@ input, select, textarea {
 			min-width: 320px;
 		}
 
+	}
+
+	@media (max-width: 600px) {
+		
+		.flex-container {
+			/* Optional: align items to the start in mobile view */
+			justify-content: flex-start;
+		}
+		
+		.flex-item {
+			/* In mobile view, each item takes the full width available (100% minus margins) */
+			flex: 1 1 calc(100% - 20px);
+			max-width: calc(100% - 20px);
+		}
 	}
 
 	html {
@@ -1140,9 +1168,12 @@ input, select, textarea {
 			-ms-transition-delay: 0.75s;
 			transition-delay: 0.75s;
 			background-image: linear-gradient(to top, rgba(19, 21, 25, 0.5), rgba(19, 21, 25, 0.5)), url("../../images/overlay.png");
-			background-size: auto, 256px 256px;
-			background-position: center, center;
-			background-repeat: no-repeat, repeat;
+			background-size: auto,
+ 256px 256px;
+			background-position: center,
+ center;
+			background-repeat: no-repeat,
+ repeat;
 			z-index: 2;
 		}
 
